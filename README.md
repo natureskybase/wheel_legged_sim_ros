@@ -2,7 +2,7 @@
  * @Author: skybase
  * @Date: 2025-12-27 23:58:50
  * @LastEditors: skybase
- * @LastEditTime: 2025-12-28 21:50:32
+ * @LastEditTime: 2025-12-29 16:22:18
  * @Description:  ᕕ(◠ڼ◠)ᕗ​ 
  * @FilePath: /wheel_legged_sim_ros/README.md
 -->
@@ -41,4 +41,10 @@ ros2 run mujoco_sim simulate
 # 可选
 # 开启foxglove桥连接
 ros2 run foxglove_bridge foxglove_bridge
+```
+
+## tip
+修改文件用户权限
+```
+sudo chown -R 1000:1000 ./src/wheel_legged_control/
 ```

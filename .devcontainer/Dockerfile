@@ -42,11 +42,11 @@ RUN wget https://github.com/google-deepmind/mujoco/releases/download/3.3.2/mujoc
 RUN tar -zxvf mujoco-3.3.2-linux-x86_64.tar.gz
 RUN mv mujoco-3.3.2 /opt/mujoco
 
-# # 编译安装 qpOASES
-# RUN mkdir -p /home/USERNAME/legged/qpOASES/build && \
-#     cd /home/USERNAME/legged/qpOASES/build && \
-#     cmake .. && \
-#     make install
+# 编译安装 qpOASES
+RUN mkdir -p /home/USERNAME/legged/qpOASES/build && \
+    cd /home/USERNAME/legged/qpOASES/build && \
+    cmake .. && \
+    make install
 
 # 配置环境变量
 RUN echo "export LD_LIBRARY_PATH=/opt/mujoco/lib:\$LD_LIBRARY_PATH" >>  ~/.bashrc
