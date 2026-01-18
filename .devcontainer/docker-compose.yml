@@ -2,13 +2,14 @@ services:
   legged-service:
     image: skybase/legged
     container_name: legged-container
+    runtime: nvidia
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+              count: all
+              capabilities: [gpu, utility, compute, video]
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
@@ -21,15 +22,16 @@ services:
       - ${WSL_X11_SOCKET:-/tmp/.X11-unix}:/tmp/.X11-unix #如果没有设置WSL_X11_SOCKET则使用默认的/tmp/.X11-unix
       - ./..:/home/skybase/legged
       - /dev:/dev
+    devices:
+      - /dev/USB2CAN0:/dev/USB2CAN0
+      - /dev/USB2CAN1:/dev/USB2CAN1
     network_mode: host
     pid: host
     ipc: host
     privileged: true
     stdin_open: true
     tty: true
-    # user: "skybase"
-    user: "root"
-    # runtime: "nvidia"
+    user: "1000:1000"
     working_dir: "/home/skybase/legged"
 
 
